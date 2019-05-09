@@ -1,0 +1,37 @@
+name: intranet
+recipe: drupal8
+config:
+  webroot: drupal/web
+  via: nginx
+  php: '7.3'
+services:
+  mailhog:
+    type: mailhog
+    hogfrom:
+    - appserver
+  database:
+    type: mariadb:10.2
+    portforward: true
+  migrationdb:
+    type: mariadb:10.2
+    portforward: true
+    creds:
+      user: migration
+      password: migration
+      database: migration
+  redis:
+    type: redis
+    persist: true
+tooling:
+  drush:
+    cmd: /app/drupal/vendor/drush/drush/drush --root=/app
+  phpcs:
+    description: Run PHP Code Sniffer
+    service: appserver
+    cmd: /app/drupal/bin/phpcs
+  phpcbf:
+    description: Run PHP Code Beautifier and Fixer (automatically fix CS)
+    service: appserver
+    cmd: /app/drupal/bin/phpcbf
+  redis-cli:
+    service: redis
