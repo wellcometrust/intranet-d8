@@ -1,7 +1,7 @@
 name: intranet
 recipe: drupal8
 config:
-  webroot: drupal/web
+  webroot: web
   via: nginx
   php: '7.3'
 services:
