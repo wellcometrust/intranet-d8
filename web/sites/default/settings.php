@@ -19,12 +19,6 @@ $settings['file_scan_ignore_directories'] = [
   'bower_components',
 ];
 
-// The hash_salt should be a unique random value for each application.
-// If left unset, the settings.platformsh.php file will attempt to provide one.
-// You can also provide a specific value here if you prefer and it will be used
-// instead. In most cases it's best to leave this blank on Platform.sh. You
-// can configure a separate hash_salt in your settings.local.php file for
-// local development.
 // $settings['hash_salt'] = 'change_me';
 
 // Set up a config sync directory.
@@ -32,12 +26,14 @@ $settings['file_scan_ignore_directories'] = [
 // This is defined inside the read-only "config" directory, deployed via Git.
 $config_directories[CONFIG_SYNC_DIRECTORY] = '../config/sync';
 
-// Automatic Platform.sh settings.
-if (file_exists($app_root . '/' . $site_path . '/settings.platformsh.php')) {
-  include $app_root . '/' . $site_path . '/settings.platformsh.php';
-}
-
 // Local settings. These come last so that they can override anything.
 if (file_exists($app_root . '/' . $site_path . '/settings.local.php')) {
   include $app_root . '/' . $site_path . '/settings.local.php';
+}
+
+
+if (isset($_SERVER['LANDO']) && $_SERVER['LANDO'] === 'ON') {
+  if (file_exists($app_root . '/' . $site_path . '/lando.settings.local.php')) {
+    include $app_root . '/' . $site_path . '/lando.settings.local.php';
+  }
 }
