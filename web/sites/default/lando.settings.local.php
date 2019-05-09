@@ -4,7 +4,7 @@
 
 // Extract lando service config from environment.
 $lando_info = json_decode(getenv('LANDO_INFO'), TRUE);
-
+$settings['hash_salt'] = 'XSll24zdRA-7sIM-dt_PZNB4J6iGFmeajKve9AOZIYUAbmY5nf-aWbyt4NS6MSjRE2B59NucAg';
 $db_mapping = [
   // Service Name -> Drupal ID
   'database' => 'default',

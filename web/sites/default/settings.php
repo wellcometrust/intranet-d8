@@ -31,9 +31,9 @@ if (file_exists($app_root . '/' . $site_path . '/settings.local.php')) {
   include $app_root . '/' . $site_path . '/settings.local.php';
 }
 
-
 if (isset($_SERVER['LANDO']) && $_SERVER['LANDO'] === 'ON') {
   if (file_exists($app_root . '/' . $site_path . '/lando.settings.local.php')) {
     include $app_root . '/' . $site_path . '/lando.settings.local.php';
   }
 }
+

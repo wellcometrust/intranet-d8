@@ -24,14 +24,14 @@ services:
     persist: true
 tooling:
   drush:
-    cmd: /app/drupal/vendor/drush/drush/drush --root=/app
+    cmd: /app/vendor/drush/drush/drush --root=/app
   phpcs:
     description: Run PHP Code Sniffer
     service: appserver
-    cmd: /app/drupal/bin/phpcs
+    cmd: /app/bin/phpcs
   phpcbf:
     description: Run PHP Code Beautifier and Fixer (automatically fix CS)
     service: appserver
-    cmd: /app/drupal/bin/phpcbf
+    cmd: /app/bin/phpcbf
   redis-cli:
     service: redis
