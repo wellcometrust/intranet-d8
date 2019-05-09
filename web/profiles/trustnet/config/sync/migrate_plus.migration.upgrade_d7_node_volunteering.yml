@@ -1,0 +1,142 @@
+uuid: 28e48771-51d1-40fd-812e-c3ab139b451a
+langcode: en
+status: true
+dependencies: {  }
+id: upgrade_d7_node_volunteering
+class: Drupal\migrate\Plugin\Migration
+field_plugin_method: alterFieldInstanceMigration
+cck_plugin_method: null
+migration_tags:
+  - 'Drupal 7'
+  - Content
+migration_group: migrate_drupal_7
+label: 'Nodes (Volunteering)'
+source:
+  plugin: d7_node
+  node_type: volunteering
+process:
+  nid:
+    -
+      plugin: get
+      source: tnid
+  vid:
+    -
+      plugin: get
+      source: vid
+  langcode:
+    -
+      plugin: default_value
+      source: language
+      default_value: und
+  title:
+    -
+      plugin: get
+      source: title
+  uid:
+    -
+      plugin: get
+      source: node_uid
+  status:
+    -
+      plugin: get
+      source: status
+  created:
+    -
+      plugin: get
+      source: created
+  changed:
+    -
+      plugin: get
+      source: changed
+  promote:
+    -
+      plugin: get
+      source: promote
+  sticky:
+    -
+      plugin: get
+      source: sticky
+  revision_uid:
+    -
+      plugin: get
+      source: revision_uid
+  revision_log:
+    -
+      plugin: get
+      source: log
+  revision_timestamp:
+    -
+      plugin: get
+      source: timestamp
+  comment_node_volunteering/0/status:
+    -
+      plugin: get
+      source: comment
+  field_about:
+    -
+      plugin: get
+      source: field_about
+  field_distance:
+    -
+      plugin: get
+      source: field_distance
+  field_feedback_from_volunteers:
+    -
+      plugin: get
+      source: field_feedback_from_volunteers
+  field_how_to_apply:
+    -
+      plugin: get
+      source: field_how_to_apply
+  field_image:
+    -
+      plugin: sub_process
+      source: field_image
+      process:
+        target_id: fid
+        alt: alt
+        title: title
+        width: width
+        height: height
+  field_org_name:
+    -
+      plugin: get
+      source: field_org_name
+  field_standfirst:
+    -
+      plugin: get
+      source: field_standfirst
+  field_time_commitment:
+    -
+      plugin: get
+      source: field_time_commitment
+  field_training_process:
+    -
+      plugin: get
+      source: field_training_process
+  field_undertaking:
+    -
+      plugin: get
+      source: field_undertaking
+  field_vol_type:
+    -
+      plugin: get
+      source: field_vol_type
+  field_website:
+    -
+      plugin: get
+      source: field_website
+  og_group_ref:
+    -
+      plugin: get
+      source: og_group_ref
+destination:
+  plugin: 'entity:node'
+  default_bundle: volunteering
+migration_dependencies:
+  required:
+    - upgrade_d7_user
+    - upgrade_d7_node_type
+  optional:
+    - upgrade_d7_field_instance
+    - upgrade_d7_comment_field_instance

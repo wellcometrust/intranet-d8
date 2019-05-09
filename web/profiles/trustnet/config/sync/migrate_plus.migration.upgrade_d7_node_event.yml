@@ -1,0 +1,192 @@
+uuid: 1f1bc5c2-eed1-4a18-9c05-5bfda03da4e6
+langcode: en
+status: true
+dependencies: {  }
+id: upgrade_d7_node_event
+class: Drupal\migrate\Plugin\Migration
+field_plugin_method: alterFieldInstanceMigration
+cck_plugin_method: null
+migration_tags:
+  - 'Drupal 7'
+  - Content
+migration_group: migrate_drupal_7
+label: 'Nodes (Event)'
+source:
+  plugin: d7_node
+  node_type: event
+process:
+  nid:
+    -
+      plugin: get
+      source: tnid
+  vid:
+    -
+      plugin: get
+      source: vid
+  langcode:
+    -
+      plugin: default_value
+      source: language
+      default_value: und
+  title:
+    -
+      plugin: get
+      source: title
+  uid:
+    -
+      plugin: get
+      source: node_uid
+  status:
+    -
+      plugin: get
+      source: status
+  created:
+    -
+      plugin: get
+      source: created
+  changed:
+    -
+      plugin: get
+      source: changed
+  promote:
+    -
+      plugin: get
+      source: promote
+  sticky:
+    -
+      plugin: get
+      source: sticky
+  revision_uid:
+    -
+      plugin: get
+      source: revision_uid
+  revision_log:
+    -
+      plugin: get
+      source: log
+  revision_timestamp:
+    -
+      plugin: get
+      source: timestamp
+  comment_node_event/0/status:
+    -
+      plugin: get
+      source: comment
+  field_event_date:
+    -
+      plugin: sub_process
+      source: field_event_date
+      process:
+        value:
+          plugin: format_date
+          from_format: U
+          to_format: U
+          source: value
+  field_event_description:
+    -
+      plugin: get
+      source: field_event_description
+  field_event_location:
+    -
+      plugin: get
+      source: field_event_location
+  field_event_main_image:
+    -
+      plugin: sub_process
+      source: field_event_main_image
+      process:
+        target_id: fid
+        alt: alt
+        title: title
+        width: width
+        height: height
+  field_event_rsvp:
+    -
+      plugin: get
+      source: field_event_rsvp
+  field_event_rsvp_people_list:
+    -
+      plugin: get
+      source: field_event_rsvp_people_list
+  field_event_standfirst:
+    -
+      plugin: get
+      source: field_event_standfirst
+  field_homepage_submit:
+    -
+      plugin: get
+      source: field_homepage_submit
+  field_reject_content:
+    -
+      plugin: get
+      source: field_reject_content
+  field_schedule_for_publishing:
+    -
+      plugin: get
+      source: field_schedule_for_publishing
+  field_scheduled_publishing_date:
+    -
+      plugin: sub_process
+      source: field_scheduled_publishing_date
+      process:
+        value:
+          plugin: format_date
+          from_format: U
+          to_format: U
+          source: value
+  field_send_moderation:
+    -
+      plugin: get
+      source: field_send_moderation
+  og_group_ref:
+    -
+      plugin: get
+      source: og_group_ref
+  field_event_rsvp_email:
+    -
+      plugin: get
+      source: field_event_rsvp_email
+  field_event_capacity:
+    -
+      plugin: get
+      source: field_event_capacity
+  field_event_unregistered:
+    -
+      plugin: get
+      source: field_event_unregistered
+  field_header_colour_selector:
+    -
+      plugin: get
+      source: field_header_colour_selector
+  field_editorial_tags:
+    -
+      plugin: sub_process
+      source: field_editorial_tags
+      process:
+        target_id: tid
+  field_event_promote_lift_screens:
+    -
+      plugin: get
+      source: field_event_promote_lift_screens
+  field_event_outlook_id:
+    -
+      plugin: get
+      source: field_event_outlook_id
+  field_event_update_message:
+    -
+      plugin: get
+      source: field_event_update_message
+  field_event_audience:
+    -
+      plugin: get
+      source: field_event_audience
+destination:
+  plugin: 'entity:node'
+  default_bundle: event
+migration_dependencies:
+  required:
+    - upgrade_d7_user
+    - upgrade_d7_node_type
+  optional:
+    - upgrade_d7_field_instance
+    - upgrade_d7_comment_field_instance

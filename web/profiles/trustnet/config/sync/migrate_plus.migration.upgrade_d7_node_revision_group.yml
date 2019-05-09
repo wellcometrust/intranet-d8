@@ -1,0 +1,211 @@
+uuid: 149bab4e-3be0-479e-b34d-38b1310f3c6c
+langcode: en
+status: true
+dependencies: {  }
+id: upgrade_d7_node_revision_group
+class: Drupal\migrate\Plugin\Migration
+field_plugin_method: alterFieldFormatterMigration
+cck_plugin_method: null
+migration_tags:
+  - 'Drupal 7'
+  - Content
+migration_group: migrate_drupal_7
+label: 'Node revisions (Group)'
+source:
+  plugin: d7_node_revision
+  node_type: group
+process:
+  nid:
+    -
+      plugin: get
+      source: nid
+  vid:
+    -
+      plugin: get
+      source: vid
+  langcode:
+    -
+      plugin: default_value
+      source: language
+      default_value: und
+  title:
+    -
+      plugin: get
+      source: title
+  uid:
+    -
+      plugin: get
+      source: node_uid
+  status:
+    -
+      plugin: get
+      source: status
+  created:
+    -
+      plugin: get
+      source: created
+  changed:
+    -
+      plugin: get
+      source: changed
+  promote:
+    -
+      plugin: get
+      source: promote
+  sticky:
+    -
+      plugin: get
+      source: sticky
+  revision_uid:
+    -
+      plugin: get
+      source: revision_uid
+  revision_log:
+    -
+      plugin: get
+      source: log
+  revision_timestamp:
+    -
+      plugin: get
+      source: timestamp
+  comment_node_group/0/status:
+    -
+      plugin: get
+      source: comment
+  field_group_auto_follow_group:
+    -
+      plugin: get
+      source: field_group_auto_follow_group
+  field_group_body:
+    -
+      plugin: get
+      source: field_group_body
+  field_group_count_content:
+    -
+      plugin: get
+      source: field_group_count_content
+  field_group_count_members:
+    -
+      plugin: get
+      source: field_group_count_members
+  field_group_departmental_group:
+    -
+      plugin: get
+      source: field_group_departmental_group
+  field_group_org_chart:
+    -
+      plugin: sub_process
+      source: field_group_org_chart
+      process:
+        target_id: tid
+  field_group_related:
+    -
+      plugin: get
+      source: field_group_related
+  field_group_sharepoint_des:
+    -
+      plugin: get
+      source: field_group_sharepoint_des
+  field_group_sharepoint_link:
+    -
+      plugin: get
+      source: field_group_sharepoint_link
+  field_group_standfirst:
+    -
+      plugin: get
+      source: field_group_standfirst
+  field_group_team_reference:
+    -
+      plugin: sub_process
+      source: field_group_team_reference
+      process:
+        target_id: tid
+  group_access:
+    -
+      plugin: get
+      source: group_access
+  group_group:
+    -
+      plugin: get
+      source: group_group
+  og_roles_permissions:
+    -
+      plugin: get
+      source: og_roles_permissions
+  field_shared_field_free_tagging:
+    -
+      plugin: sub_process
+      source: field_shared_field_free_tagging
+      process:
+        target_id: tid
+  field_group_group_owners:
+    -
+      plugin: get
+      source: field_group_group_owners
+  field_group_content_last_update:
+    -
+      plugin: sub_process
+      source: field_group_content_last_update
+      process:
+        value:
+          plugin: format_date
+          from_format: U
+          to_format: U
+          source: value
+  field_group_open_group:
+    -
+      plugin: get
+      source: field_group_open_group
+  field_group_priority_area_group:
+    -
+      plugin: get
+      source: field_group_priority_area_group
+  field_header_colour_selector:
+    -
+      plugin: get
+      source: field_header_colour_selector
+  field_group_slack_link:
+    -
+      plugin: get
+      source: field_group_slack_link
+  field_group_post_to_slack:
+    -
+      plugin: get
+      source: field_group_post_to_slack
+destination:
+  plugin: 'entity_revision:node'
+  default_bundle: group
+migration_dependencies:
+  required:
+    - upgrade_d7_node_course
+    - upgrade_d7_node_event
+    - upgrade_d7_node_forum
+    - upgrade_d7_node_group
+    - upgrade_d7_node_home
+    - upgrade_d7_node_job
+    - upgrade_d7_node_lunch_menu
+    - upgrade_d7_node_lunch_menu_2
+    - upgrade_d7_node_news
+    - upgrade_d7_node_notice
+    - upgrade_d7_node_search_page
+    - upgrade_d7_node_volunteering
+    - upgrade_d7_node_webform
+    - upgrade_d7_node_working_at_wellcome
+    - upgrade_d7_node_working_at_wellcome_types
+    - upgrade_d7_node_course
+    - upgrade_d7_node_event
+    - upgrade_d7_node_forum
+    - upgrade_d7_node_group
+    - upgrade_d7_node_home
+    - upgrade_d7_node_job
+    - upgrade_d7_node_lunch_menu
+    - upgrade_d7_node_lunch_menu_2
+    - upgrade_d7_node_news
+    - upgrade_d7_node_notice
+    - upgrade_d7_node_search_page
+    - upgrade_d7_node_volunteering
+    - upgrade_d7_node_webform
+    - upgrade_d7_node_working_at_wellcome
+    - upgrade_d7_node_working_at_wellcome_types
+    - upgrade_d7_node
+  optional: {  }

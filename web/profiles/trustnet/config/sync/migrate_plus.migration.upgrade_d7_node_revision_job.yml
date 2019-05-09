@@ -1,0 +1,189 @@
+uuid: 43c99dcc-81d5-4483-8776-c9237b3ca43c
+langcode: en
+status: true
+dependencies: {  }
+id: upgrade_d7_node_revision_job
+class: Drupal\migrate\Plugin\Migration
+field_plugin_method: alterFieldFormatterMigration
+cck_plugin_method: null
+migration_tags:
+  - 'Drupal 7'
+  - Content
+migration_group: migrate_drupal_7
+label: 'Node revisions (Job)'
+source:
+  plugin: d7_node_revision
+  node_type: job
+process:
+  nid:
+    -
+      plugin: get
+      source: nid
+  vid:
+    -
+      plugin: get
+      source: vid
+  langcode:
+    -
+      plugin: default_value
+      source: language
+      default_value: und
+  title:
+    -
+      plugin: get
+      source: title
+  uid:
+    -
+      plugin: get
+      source: node_uid
+  status:
+    -
+      plugin: get
+      source: status
+  created:
+    -
+      plugin: get
+      source: created
+  changed:
+    -
+      plugin: get
+      source: changed
+  promote:
+    -
+      plugin: get
+      source: promote
+  sticky:
+    -
+      plugin: get
+      source: sticky
+  revision_uid:
+    -
+      plugin: get
+      source: revision_uid
+  revision_log:
+    -
+      plugin: get
+      source: log
+  revision_timestamp:
+    -
+      plugin: get
+      source: timestamp
+  comment_node_job/0/status:
+    -
+      plugin: get
+      source: comment
+  field_job_closing_date:
+    -
+      plugin: sub_process
+      source: field_job_closing_date
+      process:
+        value:
+          plugin: format_date
+          from_format: U
+          to_format: U
+          source: value
+  field_job_location:
+    -
+      plugin: get
+      source: field_job_location
+  field_job_salary:
+    -
+      plugin: get
+      source: field_job_salary
+  field_job_term:
+    -
+      plugin: get
+      source: field_job_term
+  field_job_text:
+    -
+      plugin: get
+      source: field_job_text
+  field_job_type:
+    -
+      plugin: get
+      source: field_job_type
+  field_job_vacancy_uid:
+    -
+      plugin: get
+      source: field_job_vacancy_uid
+  field_waw_standfirst:
+    -
+      plugin: get
+      source: field_waw_standfirst
+  og_group_ref:
+    -
+      plugin: get
+      source: og_group_ref
+  field_brassring_id:
+    -
+      plugin: get
+      source: field_brassring_id
+  field_brassring_url:
+    -
+      plugin: get
+      source: field_brassring_url
+  field_department:
+    -
+      plugin: get
+      source: field_department
+  field_division:
+    -
+      plugin: get
+      source: field_division
+  field_duration:
+    -
+      plugin: get
+      source: field_duration
+  field_education_qualifications:
+    -
+      plugin: get
+      source: field_education_qualifications
+  field_experience_skills:
+    -
+      plugin: get
+      source: field_experience_skills
+  field_job_time:
+    -
+      plugin: get
+      source: field_job_time
+  field_manager:
+    -
+      plugin: get
+      source: field_manager
+destination:
+  plugin: 'entity_revision:node'
+  default_bundle: job
+migration_dependencies:
+  required:
+    - upgrade_d7_node_course
+    - upgrade_d7_node_event
+    - upgrade_d7_node_forum
+    - upgrade_d7_node_group
+    - upgrade_d7_node_home
+    - upgrade_d7_node_job
+    - upgrade_d7_node_lunch_menu
+    - upgrade_d7_node_lunch_menu_2
+    - upgrade_d7_node_news
+    - upgrade_d7_node_notice
+    - upgrade_d7_node_search_page
+    - upgrade_d7_node_volunteering
+    - upgrade_d7_node_webform
+    - upgrade_d7_node_working_at_wellcome
+    - upgrade_d7_node_working_at_wellcome_types
+    - upgrade_d7_node_course
+    - upgrade_d7_node_event
+    - upgrade_d7_node_forum
+    - upgrade_d7_node_group
+    - upgrade_d7_node_home
+    - upgrade_d7_node_job
+    - upgrade_d7_node_lunch_menu
+    - upgrade_d7_node_lunch_menu_2
+    - upgrade_d7_node_news
+    - upgrade_d7_node_notice
+    - upgrade_d7_node_search_page
+    - upgrade_d7_node_volunteering
+    - upgrade_d7_node_webform
+    - upgrade_d7_node_working_at_wellcome
+    - upgrade_d7_node_working_at_wellcome_types
+    - upgrade_d7_node
+  optional: {  }

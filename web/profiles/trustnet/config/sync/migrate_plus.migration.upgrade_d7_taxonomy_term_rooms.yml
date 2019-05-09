@@ -1,0 +1,167 @@
+uuid: d43677dc-760e-4c9c-9ed9-b92af811b57a
+langcode: en
+status: true
+dependencies: {  }
+id: upgrade_d7_taxonomy_term_rooms
+class: Drupal\migrate\Plugin\Migration
+field_plugin_method: alterFieldFormatterMigration
+cck_plugin_method: null
+migration_tags:
+  - 'Drupal 7'
+  - Content
+migration_group: migrate_drupal_7
+label: 'Taxonomy terms (Rooms)'
+source:
+  plugin: d7_taxonomy_term
+  bundle: rooms
+process:
+  tid:
+    -
+      plugin: get
+      source: tid
+  vid:
+    -
+      plugin: migration_lookup
+      migration: upgrade_d7_taxonomy_vocabulary
+      source: vid
+  name:
+    -
+      plugin: get
+      source: name
+  description/value:
+    -
+      plugin: get
+      source: description
+  description/format:
+    -
+      plugin: get
+      source: format
+  weight:
+    -
+      plugin: get
+      source: weight
+  parent_id:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: parent
+    -
+      plugin: migration_lookup
+      migration:
+        - upgrade_d7_taxonomy_term_employer
+        - upgrade_d7_taxonomy_term_staff_types
+        - upgrade_d7_taxonomy_term_editorial_tags
+        - upgrade_d7_taxonomy_term_room_equipment
+        - upgrade_d7_taxonomy_term_allergens
+        - upgrade_d7_taxonomy_term_rooms
+        - upgrade_d7_taxonomy_term_room_types
+        - upgrade_d7_taxonomy_term_floors
+        - upgrade_d7_taxonomy_term_floorplan_teams
+        - upgrade_d7_taxonomy_term_facilities
+        - upgrade_d7_taxonomy_term_waw_free_tagging
+        - upgrade_d7_taxonomy_term_staff_skills
+        - upgrade_d7_taxonomy_term_waw_type
+        - upgrade_d7_taxonomy_term_waw_division_department
+        - upgrade_d7_taxonomy_term_waw_applicable_to
+        - upgrade_d7_taxonomy_term_trust_structure
+        - upgrade_d7_taxonomy_term_forums
+  parent:
+    -
+      plugin: default_value
+      default_value: 0
+      source: '@parent_id'
+  forum_container:
+    -
+      plugin: get
+      source: is_container
+  changed:
+    -
+      plugin: get
+      source: timestamp
+  langcode:
+    -
+      plugin: get
+      source: language
+  field_ioffice_id:
+    -
+      plugin: get
+      source: field_ioffice_id
+  field_room_capacity:
+    -
+      plugin: get
+      source: field_room_capacity
+  field_room_concept_id:
+    -
+      plugin: get
+      source: field_room_concept_id
+  field_room_image:
+    -
+      plugin: sub_process
+      source: field_room_image
+      process:
+        target_id: fid
+        alt: alt
+        title: title
+        width: width
+        height: height
+  field_room_layout:
+    -
+      plugin: get
+      source: field_room_layout
+  field_room_review:
+    -
+      plugin: get
+      source: field_room_review
+  field_room_type:
+    -
+      plugin: get
+      source: field_room_type
+  field__equipment:
+    -
+      plugin: sub_process
+      source: field__equipment
+      process:
+        target_id: tid
+destination:
+  plugin: 'entity:taxonomy_term'
+  default_bundle: rooms
+migration_dependencies:
+  required:
+    - upgrade_d7_taxonomy_vocabulary
+  optional:
+    - upgrade_d7_field_instance
+    - upgrade_d7_taxonomy_vocabulary
+    - upgrade_d7_taxonomy_term_forums
+    - upgrade_d7_taxonomy_term_trust_structure
+    - upgrade_d7_taxonomy_term_waw_applicable_to
+    - upgrade_d7_taxonomy_term_waw_division_department
+    - upgrade_d7_taxonomy_term_waw_type
+    - upgrade_d7_taxonomy_term_staff_skills
+    - upgrade_d7_taxonomy_term_waw_free_tagging
+    - upgrade_d7_taxonomy_term_facilities
+    - upgrade_d7_taxonomy_term_floorplan_teams
+    - upgrade_d7_taxonomy_term_floors
+    - upgrade_d7_taxonomy_term_room_types
+    - upgrade_d7_taxonomy_term_rooms
+    - upgrade_d7_taxonomy_term_allergens
+    - upgrade_d7_taxonomy_term_room_equipment
+    - upgrade_d7_taxonomy_term_editorial_tags
+    - upgrade_d7_taxonomy_term_staff_types
+    - upgrade_d7_taxonomy_term_employer
+    - upgrade_d7_taxonomy_term_employer
+    - upgrade_d7_taxonomy_term_staff_types
+    - upgrade_d7_taxonomy_term_editorial_tags
+    - upgrade_d7_taxonomy_term_room_equipment
+    - upgrade_d7_taxonomy_term_allergens
+    - upgrade_d7_taxonomy_term_rooms
+    - upgrade_d7_taxonomy_term_room_types
+    - upgrade_d7_taxonomy_term_floors
+    - upgrade_d7_taxonomy_term_floorplan_teams
+    - upgrade_d7_taxonomy_term_facilities
+    - upgrade_d7_taxonomy_term_waw_free_tagging
+    - upgrade_d7_taxonomy_term_staff_skills
+    - upgrade_d7_taxonomy_term_waw_type
+    - upgrade_d7_taxonomy_term_waw_division_department
+    - upgrade_d7_taxonomy_term_waw_applicable_to
+    - upgrade_d7_taxonomy_term_trust_structure
+    - upgrade_d7_taxonomy_term_forums

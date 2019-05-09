@@ -1,0 +1,189 @@
+uuid: 811faeb4-1da9-42f3-a35b-a96fc42206d6
+langcode: en
+status: true
+dependencies: {  }
+id: upgrade_d7_node_revision_news
+class: Drupal\migrate\Plugin\Migration
+field_plugin_method: alterFieldFormatterMigration
+cck_plugin_method: null
+migration_tags:
+  - 'Drupal 7'
+  - Content
+migration_group: migrate_drupal_7
+label: 'Node revisions (News item)'
+source:
+  plugin: d7_node_revision
+  node_type: news
+process:
+  nid:
+    -
+      plugin: get
+      source: nid
+  vid:
+    -
+      plugin: get
+      source: vid
+  langcode:
+    -
+      plugin: default_value
+      source: language
+      default_value: und
+  title:
+    -
+      plugin: get
+      source: title
+  uid:
+    -
+      plugin: get
+      source: node_uid
+  status:
+    -
+      plugin: get
+      source: status
+  created:
+    -
+      plugin: get
+      source: created
+  changed:
+    -
+      plugin: get
+      source: changed
+  promote:
+    -
+      plugin: get
+      source: promote
+  sticky:
+    -
+      plugin: get
+      source: sticky
+  revision_uid:
+    -
+      plugin: get
+      source: revision_uid
+  revision_log:
+    -
+      plugin: get
+      source: log
+  revision_timestamp:
+    -
+      plugin: get
+      source: timestamp
+  comment_node_news/0/status:
+    -
+      plugin: get
+      source: comment
+  field_news_expiry_date:
+    -
+      plugin: sub_process
+      source: field_news_expiry_date
+      process:
+        value:
+          plugin: format_date
+          from_format: U
+          to_format: U
+          source: value
+  field_news_main_image:
+    -
+      plugin: sub_process
+      source: field_news_main_image
+      process:
+        target_id: fid
+        alt: alt
+        title: title
+        width: width
+        height: height
+  field_news_main_text:
+    -
+      plugin: get
+      source: field_news_main_text
+  field_news_publish_date:
+    -
+      plugin: sub_process
+      source: field_news_publish_date
+      process:
+        value:
+          plugin: format_date
+          from_format: U
+          to_format: U
+          source: value
+  field_news_standfirst:
+    -
+      plugin: get
+      source: field_news_standfirst
+  field_homepage_submit:
+    -
+      plugin: get
+      source: field_homepage_submit
+  field_reject_content:
+    -
+      plugin: get
+      source: field_reject_content
+  field_schedule_for_publishing:
+    -
+      plugin: get
+      source: field_schedule_for_publishing
+  field_scheduled_publishing_date:
+    -
+      plugin: sub_process
+      source: field_scheduled_publishing_date
+      process:
+        value:
+          plugin: format_date
+          from_format: U
+          to_format: U
+          source: value
+  field_send_moderation:
+    -
+      plugin: get
+      source: field_send_moderation
+  og_group_ref:
+    -
+      plugin: get
+      source: og_group_ref
+  field_header_colour_selector:
+    -
+      plugin: get
+      source: field_header_colour_selector
+  field_editorial_tags:
+    -
+      plugin: sub_process
+      source: field_editorial_tags
+      process:
+        target_id: tid
+destination:
+  plugin: 'entity_revision:node'
+  default_bundle: news
+migration_dependencies:
+  required:
+    - upgrade_d7_node_course
+    - upgrade_d7_node_event
+    - upgrade_d7_node_forum
+    - upgrade_d7_node_group
+    - upgrade_d7_node_home
+    - upgrade_d7_node_job
+    - upgrade_d7_node_lunch_menu
+    - upgrade_d7_node_lunch_menu_2
+    - upgrade_d7_node_news
+    - upgrade_d7_node_notice
+    - upgrade_d7_node_search_page
+    - upgrade_d7_node_volunteering
+    - upgrade_d7_node_webform
+    - upgrade_d7_node_working_at_wellcome
+    - upgrade_d7_node_working_at_wellcome_types
+    - upgrade_d7_node_course
+    - upgrade_d7_node_event
+    - upgrade_d7_node_forum
+    - upgrade_d7_node_group
+    - upgrade_d7_node_home
+    - upgrade_d7_node_job
+    - upgrade_d7_node_lunch_menu
+    - upgrade_d7_node_lunch_menu_2
+    - upgrade_d7_node_news
+    - upgrade_d7_node_notice
+    - upgrade_d7_node_search_page
+    - upgrade_d7_node_volunteering
+    - upgrade_d7_node_webform
+    - upgrade_d7_node_working_at_wellcome
+    - upgrade_d7_node_working_at_wellcome_types
+    - upgrade_d7_node
+  optional: {  }

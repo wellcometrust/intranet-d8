@@ -1,0 +1,131 @@
+uuid: e163977b-ba7f-4e5e-8aa0-f77d57a7b800
+langcode: en
+status: true
+dependencies: {  }
+id: upgrade_d7_node_revision_working_at_wellcome_types
+class: Drupal\migrate\Plugin\Migration
+field_plugin_method: alterFieldFormatterMigration
+cck_plugin_method: null
+migration_tags:
+  - 'Drupal 7'
+  - Content
+migration_group: migrate_drupal_7
+label: 'Node revisions (Working at Wellcome Types)'
+source:
+  plugin: d7_node_revision
+  node_type: working_at_wellcome_types
+process:
+  nid:
+    -
+      plugin: get
+      source: nid
+  vid:
+    -
+      plugin: get
+      source: vid
+  langcode:
+    -
+      plugin: default_value
+      source: language
+      default_value: und
+  title:
+    -
+      plugin: get
+      source: title
+  uid:
+    -
+      plugin: get
+      source: node_uid
+  status:
+    -
+      plugin: get
+      source: status
+  created:
+    -
+      plugin: get
+      source: created
+  changed:
+    -
+      plugin: get
+      source: changed
+  promote:
+    -
+      plugin: get
+      source: promote
+  sticky:
+    -
+      plugin: get
+      source: sticky
+  revision_uid:
+    -
+      plugin: get
+      source: revision_uid
+  revision_log:
+    -
+      plugin: get
+      source: log
+  revision_timestamp:
+    -
+      plugin: get
+      source: timestamp
+  comment_node_working_at_wellcome_types/0/status:
+    -
+      plugin: get
+      source: comment
+  field_waw_types_description:
+    -
+      plugin: get
+      source: field_waw_types_description
+  field_waw_types_form_content:
+    -
+      plugin: get
+      source: field_waw_types_form_content
+  field_waw_types_order:
+    -
+      plugin: get
+      source: field_waw_types_order
+  field_waw_types_page_content:
+    -
+      plugin: get
+      source: field_waw_types_page_content
+  field_waw_types_waw_content:
+    -
+      plugin: get
+      source: field_waw_types_waw_content
+destination:
+  plugin: 'entity_revision:node'
+  default_bundle: working_at_wellcome_types
+migration_dependencies:
+  required:
+    - upgrade_d7_node_course
+    - upgrade_d7_node_event
+    - upgrade_d7_node_forum
+    - upgrade_d7_node_group
+    - upgrade_d7_node_home
+    - upgrade_d7_node_job
+    - upgrade_d7_node_lunch_menu
+    - upgrade_d7_node_lunch_menu_2
+    - upgrade_d7_node_news
+    - upgrade_d7_node_notice
+    - upgrade_d7_node_search_page
+    - upgrade_d7_node_volunteering
+    - upgrade_d7_node_webform
+    - upgrade_d7_node_working_at_wellcome
+    - upgrade_d7_node_working_at_wellcome_types
+    - upgrade_d7_node_course
+    - upgrade_d7_node_event
+    - upgrade_d7_node_forum
+    - upgrade_d7_node_group
+    - upgrade_d7_node_home
+    - upgrade_d7_node_job
+    - upgrade_d7_node_lunch_menu
+    - upgrade_d7_node_lunch_menu_2
+    - upgrade_d7_node_news
+    - upgrade_d7_node_notice
+    - upgrade_d7_node_search_page
+    - upgrade_d7_node_volunteering
+    - upgrade_d7_node_webform
+    - upgrade_d7_node_working_at_wellcome
+    - upgrade_d7_node_working_at_wellcome_types
+    - upgrade_d7_node
+  optional: {  }

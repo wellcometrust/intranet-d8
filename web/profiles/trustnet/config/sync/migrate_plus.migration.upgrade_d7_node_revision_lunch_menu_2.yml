@@ -1,0 +1,149 @@
+uuid: fa447334-d039-4e9b-9598-35fb8bdc5c9a
+langcode: en
+status: true
+dependencies: {  }
+id: upgrade_d7_node_revision_lunch_menu_2
+class: Drupal\migrate\Plugin\Migration
+field_plugin_method: alterFieldFormatterMigration
+cck_plugin_method: null
+migration_tags:
+  - 'Drupal 7'
+  - Content
+migration_group: migrate_drupal_7
+label: 'Node revisions (Lunch menu 2)'
+source:
+  plugin: d7_node_revision
+  node_type: lunch_menu_2
+process:
+  nid:
+    -
+      plugin: get
+      source: nid
+  vid:
+    -
+      plugin: get
+      source: vid
+  langcode:
+    -
+      plugin: default_value
+      source: language
+      default_value: und
+  title:
+    -
+      plugin: get
+      source: title
+  uid:
+    -
+      plugin: get
+      source: node_uid
+  status:
+    -
+      plugin: get
+      source: status
+  created:
+    -
+      plugin: get
+      source: created
+  changed:
+    -
+      plugin: get
+      source: changed
+  promote:
+    -
+      plugin: get
+      source: promote
+  sticky:
+    -
+      plugin: get
+      source: sticky
+  revision_uid:
+    -
+      plugin: get
+      source: revision_uid
+  revision_log:
+    -
+      plugin: get
+      source: log
+  revision_timestamp:
+    -
+      plugin: get
+      source: timestamp
+  comment_node_lunch_menu_2/0/status:
+    -
+      plugin: get
+      source: comment
+  field_friday_menu:
+    -
+      plugin: get
+      source: field_friday_menu
+  field_menu_week_starting:
+    -
+      plugin: sub_process
+      source: field_menu_week_starting
+      process:
+        value:
+          plugin: format_date
+          from_format: U
+          to_format: U
+          source: value
+  field_monday_menu:
+    -
+      plugin: get
+      source: field_monday_menu
+  field_restaurant_name:
+    -
+      plugin: get
+      source: field_restaurant_name
+  field_thursday_menu:
+    -
+      plugin: get
+      source: field_thursday_menu
+  field_tuesday_menu:
+    -
+      plugin: get
+      source: field_tuesday_menu
+  field_wednesday_menu:
+    -
+      plugin: get
+      source: field_wednesday_menu
+  og_group_ref:
+    -
+      plugin: get
+      source: og_group_ref
+destination:
+  plugin: 'entity_revision:node'
+  default_bundle: lunch_menu_2
+migration_dependencies:
+  required:
+    - upgrade_d7_node_course
+    - upgrade_d7_node_event
+    - upgrade_d7_node_forum
+    - upgrade_d7_node_group
+    - upgrade_d7_node_home
+    - upgrade_d7_node_job
+    - upgrade_d7_node_lunch_menu
+    - upgrade_d7_node_lunch_menu_2
+    - upgrade_d7_node_news
+    - upgrade_d7_node_notice
+    - upgrade_d7_node_search_page
+    - upgrade_d7_node_volunteering
+    - upgrade_d7_node_webform
+    - upgrade_d7_node_working_at_wellcome
+    - upgrade_d7_node_working_at_wellcome_types
+    - upgrade_d7_node_course
+    - upgrade_d7_node_event
+    - upgrade_d7_node_forum
+    - upgrade_d7_node_group
+    - upgrade_d7_node_home
+    - upgrade_d7_node_job
+    - upgrade_d7_node_lunch_menu
+    - upgrade_d7_node_lunch_menu_2
+    - upgrade_d7_node_news
+    - upgrade_d7_node_notice
+    - upgrade_d7_node_search_page
+    - upgrade_d7_node_volunteering
+    - upgrade_d7_node_webform
+    - upgrade_d7_node_working_at_wellcome
+    - upgrade_d7_node_working_at_wellcome_types
+    - upgrade_d7_node
+  optional: {  }

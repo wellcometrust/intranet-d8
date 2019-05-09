@@ -1,0 +1,163 @@
+uuid: e559b8ce-a093-4fe2-bdc1-a63165808cba
+langcode: en
+status: true
+dependencies: {  }
+id: upgrade_d7_node_revision_webform
+class: Drupal\migrate\Plugin\Migration
+field_plugin_method: alterFieldFormatterMigration
+cck_plugin_method: null
+migration_tags:
+  - 'Drupal 7'
+  - Content
+migration_group: migrate_drupal_7
+label: 'Node revisions (Webform)'
+source:
+  plugin: d7_node_revision
+  node_type: webform
+process:
+  nid:
+    -
+      plugin: get
+      source: nid
+  vid:
+    -
+      plugin: get
+      source: vid
+  langcode:
+    -
+      plugin: default_value
+      source: language
+      default_value: und
+  title:
+    -
+      plugin: get
+      source: title
+  uid:
+    -
+      plugin: get
+      source: node_uid
+  status:
+    -
+      plugin: get
+      source: status
+  created:
+    -
+      plugin: get
+      source: created
+  changed:
+    -
+      plugin: get
+      source: changed
+  promote:
+    -
+      plugin: get
+      source: promote
+  sticky:
+    -
+      plugin: get
+      source: sticky
+  revision_uid:
+    -
+      plugin: get
+      source: revision_uid
+  revision_log:
+    -
+      plugin: get
+      source: log
+  revision_timestamp:
+    -
+      plugin: get
+      source: timestamp
+  comment_node_webform/0/status:
+    -
+      plugin: get
+      source: comment
+  field_form_standfirst:
+    -
+      plugin: get
+      source: field_form_standfirst
+  field_shared_field_free_tagging:
+    -
+      plugin: sub_process
+      source: field_shared_field_free_tagging
+      process:
+        target_id: tid
+  field_submission_type:
+    -
+      plugin: get
+      source: field_submission_type
+  field_waw_applicable_to:
+    -
+      plugin: sub_process
+      source: field_waw_applicable_to
+      process:
+        target_id: tid
+  field_waw_division_department:
+    -
+      plugin: sub_process
+      source: field_waw_division_department
+      process:
+        target_id: tid
+  field_waw_type:
+    -
+      plugin: sub_process
+      source: field_waw_type
+      process:
+        target_id: tid
+  field_webform_app_recipients:
+    -
+      plugin: get
+      source: field_webform_app_recipients
+  field_webform_lm_approval:
+    -
+      plugin: get
+      source: field_webform_lm_approval
+  field_feature_flags:
+    -
+      plugin: get
+      source: field_feature_flags
+  field_sidebar_info:
+    -
+      plugin: get
+      source: field_sidebar_info
+  field_access_to_form_approval:
+    -
+      plugin: get
+      source: field_access_to_form_approval
+destination:
+  plugin: 'entity_revision:node'
+  default_bundle: webform
+migration_dependencies:
+  required:
+    - upgrade_d7_node_course
+    - upgrade_d7_node_event
+    - upgrade_d7_node_forum
+    - upgrade_d7_node_group
+    - upgrade_d7_node_home
+    - upgrade_d7_node_job
+    - upgrade_d7_node_lunch_menu
+    - upgrade_d7_node_lunch_menu_2
+    - upgrade_d7_node_news
+    - upgrade_d7_node_notice
+    - upgrade_d7_node_search_page
+    - upgrade_d7_node_volunteering
+    - upgrade_d7_node_webform
+    - upgrade_d7_node_working_at_wellcome
+    - upgrade_d7_node_working_at_wellcome_types
+    - upgrade_d7_node_course
+    - upgrade_d7_node_event
+    - upgrade_d7_node_forum
+    - upgrade_d7_node_group
+    - upgrade_d7_node_home
+    - upgrade_d7_node_job
+    - upgrade_d7_node_lunch_menu
+    - upgrade_d7_node_lunch_menu_2
+    - upgrade_d7_node_news
+    - upgrade_d7_node_notice
+    - upgrade_d7_node_search_page
+    - upgrade_d7_node_volunteering
+    - upgrade_d7_node_webform
+    - upgrade_d7_node_working_at_wellcome
+    - upgrade_d7_node_working_at_wellcome_types
+    - upgrade_d7_node
+  optional: {  }

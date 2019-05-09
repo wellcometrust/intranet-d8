@@ -1,0 +1,304 @@
+uuid: 729c6772-59d5-4016-b0de-286d52f99253
+langcode: en
+status: true
+dependencies: {  }
+id: upgrade_d7_user
+class: Drupal\user\Plugin\migrate\User
+field_plugin_method: alterFieldInstanceMigration
+cck_plugin_method: null
+migration_tags:
+  - 'Drupal 7'
+  - Content
+migration_group: migrate_drupal_7
+label: 'User accounts'
+source:
+  plugin: d7_user
+process:
+  uid:
+    -
+      plugin: get
+      source: uid
+  name:
+    -
+      plugin: get
+      source: name
+  pass:
+    -
+      plugin: get
+      source: pass
+  mail:
+    -
+      plugin: get
+      source: mail
+  created:
+    -
+      plugin: get
+      source: created
+  access:
+    -
+      plugin: get
+      source: access
+  login:
+    -
+      plugin: get
+      source: login
+  status:
+    -
+      plugin: get
+      source: status
+  timezone:
+    -
+      plugin: get
+      source: timezone
+  langcode:
+    -
+      plugin: user_langcode
+      source: entity_language
+      fallback_to_site_default: false
+  preferred_langcode:
+    -
+      plugin: user_langcode
+      source: language
+      fallback_to_site_default: true
+  preferred_admin_langcode:
+    -
+      plugin: user_langcode
+      source: language
+      fallback_to_site_default: true
+  init:
+    -
+      plugin: get
+      source: init
+  roles:
+    -
+      plugin: migration_lookup
+      migration: upgrade_d7_user_role
+      source: roles
+  user_picture:
+    -
+      plugin: default_value
+      source: picture
+      default_value: null
+    -
+      plugin: migration_lookup
+      migration: upgrade_d7_file
+  ldap_user_puid_sid:
+    -
+      plugin: get
+      source: ldap_user_puid_sid
+  ldap_user_puid:
+    -
+      plugin: get
+      source: ldap_user_puid
+  ldap_user_puid_property:
+    -
+      plugin: get
+      source: ldap_user_puid_property
+  ldap_user_current_dn:
+    -
+      plugin: get
+      source: ldap_user_current_dn
+  ldap_user_prov_entries:
+    -
+      plugin: get
+      source: ldap_user_prov_entries
+  ldap_user_last_checked:
+    -
+      plugin: get
+      source: ldap_user_last_checked
+  ldap_user_ldap_exclude:
+    -
+      plugin: get
+      source: ldap_user_ldap_exclude
+  field_user_absence_cover:
+    -
+      plugin: get
+      source: field_user_absence_cover
+  field_user_absence_or_other_note:
+    -
+      plugin: get
+      source: field_user_absence_or_other_note
+  field_user_addtoteam_contractor:
+    -
+      plugin: get
+      source: field_user_addtoteam_contractor
+  field_user_assistant:
+    -
+      plugin: get
+      source: field_user_assistant
+  field_user_contact_location:
+    -
+      plugin: get
+      source: field_user_contact_location
+  field_user_description:
+    -
+      plugin: get
+      source: field_user_description
+  field_user_extra_line_manager:
+    -
+      plugin: get
+      source: field_user_extra_line_manager
+  field_user_firstname:
+    -
+      plugin: get
+      source: field_user_firstname
+  field_user_job_title:
+    -
+      plugin: get
+      source: field_user_job_title
+  field_user_lastname:
+    -
+      plugin: get
+      source: field_user_lastname
+  field_user_line_manager:
+    -
+      plugin: get
+      source: field_user_line_manager
+  field_user_linkedin_url:
+    -
+      plugin: get
+      source: field_user_linkedin_url
+  field_user_mat_cover:
+    -
+      plugin: get
+      source: field_user_mat_cover
+  field_user_mat_leave:
+    -
+      plugin: get
+      source: field_user_mat_leave
+  field_user_mobile:
+    -
+      plugin: get
+      source: field_user_mobile
+  field_user_org_chart_add:
+    -
+      plugin: get
+      source: field_user_org_chart_add
+  field_user_org_team:
+    -
+      plugin: get
+      source: field_user_org_team
+  field_user_personal_assistant:
+    -
+      plugin: get
+      source: field_user_personal_assistant
+  field_user_phone_ext:
+    -
+      plugin: get
+      source: field_user_phone_ext
+  field_user_picture:
+    -
+      plugin: sub_process
+      source: field_user_picture
+      process:
+        target_id: fid
+        alt: alt
+        title: title
+        width: width
+        height: height
+  field_user_post_id:
+    -
+      plugin: get
+      source: field_user_post_id
+  field_user_report_post_id:
+    -
+      plugin: get
+      source: field_user_report_post_id
+  field_user_secondment:
+    -
+      plugin: get
+      source: field_user_secondment
+  field_user_selecthr:
+    -
+      plugin: get
+      source: field_user_selecthr
+  field_user_show_email:
+    -
+      plugin: get
+      source: field_user_show_email
+  field_user_sid:
+    -
+      plugin: get
+      source: field_user_sid
+  field_user_skills:
+    -
+      plugin: sub_process
+      source: field_user_skills
+      process:
+        target_id: tid
+  field_user_twitter_link:
+    -
+      plugin: get
+      source: field_user_twitter_link
+  field_user_updated:
+    -
+      plugin: sub_process
+      source: field_user_updated
+      process:
+        value:
+          plugin: format_date
+          from_format: U
+          to_format: U
+          source: value
+  og_user_node:
+    -
+      plugin: get
+      source: og_user_node
+  field_user_org_suppress:
+    -
+      plugin: get
+      source: field_user_org_suppress
+  field_joint_management:
+    -
+      plugin: get
+      source: field_joint_management
+  field_upgrade_reports:
+    -
+      plugin: get
+      source: field_upgrade_reports
+  field_header_colour_selector:
+    -
+      plugin: get
+      source: field_header_colour_selector
+  field_user_best_contact:
+    -
+      plugin: get
+      source: field_user_best_contact
+  field_servicenow_sys_id:
+    -
+      plugin: get
+      source: field_servicenow_sys_id
+  field_user_cost_code:
+    -
+      plugin: get
+      source: field_user_cost_code
+  field_user_staff_type:
+    -
+      plugin: get
+      source: field_user_staff_type
+  field_user_employer:
+    -
+      plugin: get
+      source: field_user_employer
+  field_user_leaving_date:
+    -
+      plugin: sub_process
+      source: field_user_leaving_date
+      process:
+        value:
+          plugin: format_date
+          from_format: U
+          to_format: U
+          source: value
+destination:
+  plugin: 'entity:user'
+migration_dependencies:
+  required:
+    - upgrade_d7_user_role
+  optional:
+    - upgrade_d7_field_instance
+    - upgrade_d7_file
+    - upgrade_user_picture_field_instance
+    - upgrade_user_picture_entity_display
+    - upgrade_user_picture_entity_form_display
+    - upgrade_d7_user_role
