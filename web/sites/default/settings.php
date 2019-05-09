@@ -22,9 +22,9 @@ $settings['file_scan_ignore_directories'] = [
 // $settings['hash_salt'] = 'change_me';
 
 // Set up a config sync directory.
-//
 // This is defined inside the read-only "config" directory, deployed via Git.
-$config_directories[CONFIG_SYNC_DIRECTORY] = '../config/sync';
+$settings['install_profile'] = 'trustnet';
+$config_directories['sync'] = 'profiles/' . $settings['install_profile'] . '/config/sync';
 
 // Local settings. These come last so that they can override anything.
 if (file_exists($app_root . '/' . $site_path . '/settings.local.php')) {
