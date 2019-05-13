@@ -1,0 +1,23 @@
+uuid: 723fe08c-50fb-4356-9978-64c6f23c63bc
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.group
+id: group-admin
+label: Admin
+weight: 100
+internal: false
+audience: member
+group_type: group
+permissions_ui: true
+permissions:
+  - 'access content overview'
+  - 'administer group'
+  - 'administer members'
+  - 'delete group'
+  - 'edit group'
+  - 'leave group'
+  - 'update own group_membership content'
+  - 'view group'
+  - 'view group_membership content'

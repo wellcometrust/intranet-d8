@@ -43,3 +43,4 @@ node_modules
 .phplint-cache
 config/sync/*
 assets/*
+/tools/lando/assets/database/db.sql

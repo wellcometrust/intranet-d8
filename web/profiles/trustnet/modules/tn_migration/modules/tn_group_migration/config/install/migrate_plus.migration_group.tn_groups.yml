@@ -1,0 +1,15 @@
+langcode: en
+status: true
+dependencies: {  }
+id: tn_groups
+label: 'TN Group Imports'
+description: 'The main groups from TN.'
+source_type: 'Custom tables'
+module: null
+shared_configuration:
+  source:
+    key: migration
+  constants:
+    body_format: basic_html
+    published_status: 1
+    uid: 1
