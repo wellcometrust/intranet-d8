@@ -18,15 +18,11 @@ module:
   field_ui: 0
   file: 0
   filter: 0
+  gnode: 0
   group: 0
   image: 0
   link: 0
   menu_ui: 0
-  migrate: 0
-  migrate_drupal: 0
-  migrate_drupal_ui: 0
-  migrate_plus: 0
-  migrate_upgrade: 0
   node: 0
   options: 0
   page_cache: 0
