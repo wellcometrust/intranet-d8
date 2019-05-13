@@ -37,12 +37,9 @@ process:
   type:
     plugin: default_value
     default_value: article
-  article_body/value:
+  article_body:
       plugin: get
       source: field_news_main_text
-  article_body/format:
-    plugin: default_value
-    default_value: basic_html
 destination:
   plugin: 'entity:node'
 
