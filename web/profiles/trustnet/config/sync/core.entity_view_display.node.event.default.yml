@@ -1,0 +1,28 @@
+uuid: f894b37f-6ca2-48ce-bc09-1b76676745ee
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.event.event_description
+    - node.type.event
+  module:
+    - text
+    - user
+id: node.event.default
+targetEntityType: node
+bundle: event
+mode: default
+content:
+  event_description:
+    weight: 101
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden: {  }
