@@ -1,0 +1,43 @@
+uuid: 729c6772-59d5-4016-b0de-286d52f99253
+langcode: en
+status: true
+dependencies: {  }
+id: tn_users_users
+class: Drupal\user\Plugin\migrate\User
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - 'TN Users'
+  - 'Drupal 7'
+migration_group: tn_users
+label: 'Migrate users'
+source:
+  plugin: d7_user
+process:
+  uid:
+    - plugin: get
+      source: uid
+  name:
+    - plugin: get
+      source: name
+  pass:
+    - plugin: get
+      source: pass
+  mail:
+    - plugin: get
+      source: mail
+  created:
+    - plugin: get
+      source: created
+  access:
+    - plugin: get
+      source: access
+  login:
+    - plugin: get
+      source: login
+  status:
+    - plugin: get
+      source: status
+destination:
+  plugin: 'entity:user'
+migration_dependencies: { }

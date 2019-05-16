@@ -7,6 +7,7 @@ field_plugin_method: null
 cck_plugin_method: null
 migration_tags:
   - 'TN Groups'
+  - 'Drupal 7'
 migration_group: tn_groups
 label: 'Migrate groups'
 source:
@@ -14,24 +15,19 @@ source:
   node_type: group
 process:
   nid:
-    -
-      plugin: get
+    - plugin: get
       source: tnid
   label:
-    -
-      plugin: get
+    - plugin: get
       source: title
   status:
-    -
-      plugin: get
+    - plugin: get
       source: status
   created:
-    -
-      plugin: get
+    - plugin: get
       source: created
   changed:
-    -
-      plugin: get
+    - plugin: get
       source: changed
   type:
     plugin: default_value

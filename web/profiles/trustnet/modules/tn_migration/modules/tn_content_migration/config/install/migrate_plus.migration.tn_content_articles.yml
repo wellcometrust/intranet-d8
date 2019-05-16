@@ -8,6 +8,7 @@ cck_plugin_method: null
 migration_tags:
   - 'TN Content'
   - 'TN Articles'
+  - 'Drupal 7'
 migration_group: tn_content
 label: 'Migrate content'
 source:
