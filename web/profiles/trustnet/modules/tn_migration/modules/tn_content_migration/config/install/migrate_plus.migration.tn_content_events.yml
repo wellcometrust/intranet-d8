@@ -40,7 +40,7 @@ process:
     default_value: event
   event_description:
       plugin: get
-      source: field_news_main_text
+      source: field_event_description
 destination:
   plugin: 'entity:node'
 migration_dependencies: null
