@@ -1,0 +1,7 @@
+tn_cookie_auth.generate_cookie:
+  path: '/admin/config/system/tn_cookie_auth'
+  defaults:
+    _form: '\Drupal\tn_cookie_auth\Form\CookieGeneratorForm'
+    _title: TN Cookie Generator
+  requirements:
+    _permission: 'administer tn_cookie_auth settings'

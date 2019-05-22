@@ -1,0 +1,60 @@
+services:
+  tn_cookie_auth.authentication.token:
+    class: Drupal\tn_cookie_auth\Authentication\Provider\TNCookie
+    arguments:
+      - '@tn_cookie_auth.user_manager'
+      - '@tn_cookie_auth.cookie_helper'
+      - '@session'
+      - '@session_configuration'
+      - '@session_manager'
+      - '@database'
+      - '@event_dispatcher'
+    calls:
+      - ['setLogger', ['%tn_cookie_auth.logger.service%']]
+    tags:
+      - name: authentication_provider
+        provider_id: tn_cookie
+        priority: 100
+        global: true
+
+  tn_cookie_auth.user_manager:
+      class: Drupal\tn_cookie_auth\User\Manager
+      arguments:
+        - '@user.data'
+        - '@entity_type.manager'
+        - '%tn_cookie_auth.adapter.service%'
+      calls:
+        - ['setLogger', ['%tn_cookie_auth.logger.service%']]
+
+  # disable http status exceptions b/c they are expected and handled via status code
+  tn_cookie_auth.http_client:
+      class: GuzzleHttp\ClientInterface
+      factory: http_client_factory:fromOptions
+      arguments:
+        - http_errors: false
+          verify: false
+
+  tn_cookie_auth.cookie_helper:
+      public: true
+      class: Drupal\tn_cookie_auth\Helper\CookieHelper
+      arguments:
+        - '@request_stack'
+        - '@tn_cookie_auth.logger'
+      tags:
+        - { name: 'event_subscriber' }
+
+  tn_cookie_auth.logger:
+    parent: logger.channel_base
+    arguments:
+      - tn_cookie_auth
+
+
+  tn_cookie_auth.default_user_adapter:
+    class: Drupal\tn_cookie_auth\User\DefaultUserAdapter
+    arguments:
+      - '@entity_type.manager'
+      - '@tn_cookie_auth.logger'
+
+parameters:
+  tn_cookie_auth.adapter.service: '@tn_cookie_auth.default_user_adapter'
+  tn_cookie_auth.logger.service: '@tn_cookie_auth.logger'

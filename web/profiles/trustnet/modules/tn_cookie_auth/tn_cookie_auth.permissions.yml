@@ -1,0 +1,4 @@
+administer tn_cookie_auth settings:
+  title: 'Administer TN Cookie Auth module'
+  description: 'Perform administration tasks for the TN Cookie Auth module.'
+  restrict access: TRUE
