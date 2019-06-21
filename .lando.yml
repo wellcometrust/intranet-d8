@@ -5,6 +5,8 @@ config:
   via: nginx
   php: '7.3'
 services:
+#  skipper:
+#    type: skipper
   mailhog:
     type: mailhog
     hogfrom:
